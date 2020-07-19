@@ -1,1 +1,1 @@
-export const ENDPOINT = 'http://localhost:5500'
+export const ENDPOINT = 'https://dev-talks.herokuapp.com/'
