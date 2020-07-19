@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://sumit:sumit333@devtalks.yfcoe.mongodb.net/<dbname>?retryWrites=true&w=majority",
+    "jwtSecret": "sumaxSecretToken",
+    "githubClientId": "88626b1cce1352651d50",
+    "githubSecret": "b106a58b2aa86535bbc3acb698de66f89e0ea07b"
+}
