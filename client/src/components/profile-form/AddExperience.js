@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addExperience } from '../../actions/profille'
+import { addExperience } from '../../actions/profile.action'
 import { Link, withRouter } from 'react-router-dom';
 
 const AddExperience = ({ addExperience, history }) => {
@@ -14,7 +14,6 @@ const AddExperience = ({ addExperience, history }) => {
     const { title, company, location, from, to, current, description } = formData
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
         addExperience(formData, history)
     }
     return (

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom'
-import { createOrUpdateProfile } from '../../actions/profille'
+import { createOrUpdateProfile } from '../../actions/profile.action'
 
 export const SocialInputField = ({ social, handleChange }) => {
     return (
@@ -45,8 +45,6 @@ const CreateProfile = ({ createOrUpdateProfile, history }) => {
     const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value })
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(formData);
-
         createOrUpdateProfile(formData, history)
     }
 

@@ -32,8 +32,6 @@ export const register = (name, email, password) => async dispatch => {
 }
 
 export const loadUser = () => async dispatch => {
-    console.log("load user called");
-
     if (localStorage.token) {
         setAuthToken(localStorage.token)
     }

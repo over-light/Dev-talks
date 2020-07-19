@@ -105,6 +105,7 @@ router.delete('/:id', auth, async (req, res) => {
 // @access private
 
 router.put('/like/:id', auth, async (req, res) => {
+
     try {
         const post = await Post.findById(req.params.id)
 
@@ -129,7 +130,6 @@ router.put('/like/:id', auth, async (req, res) => {
 router.put('/unlike/:id', auth, async (req, res) => {
     try {
         const post = await Post.findById(req.params.id)
-
         // check if the post has already been liked
         if (post.likes.filter(like => like.user.toString() === req.user.id).length === 0) {
             return res.status(400).json({ msg: 'Post has not yet been liked' })
@@ -145,8 +145,72 @@ router.put('/unlike/:id', auth, async (req, res) => {
         res.status(500).send("server error")
     }
 })
+// @ route PUT api/posts/comments/:id
+// @ desc comment on post
+// @access private
+router.post('/comments/:id', [auth,
+    [
+        check('text', 'Text is required').not().isEmpty()
+    ]
+], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).send({ msg: errors.array() })
+    }
+    try {
+        const user = await User.findById(req.user.id).select('-password')
+        const post = await Post.findById(req.params.id)
 
-//TODO implement comments api
+        const newComment = {
+            text: req.body.text,
+            name: user.name,
+            avatar: user.avatar,
+            user: req.user.id
+        }
+        post.comments.unshift(newComment);
+        await post.save();
+        res.status(200).json(post.comments)
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send("server error")
+    }
+})
+
+// @ route DELETE api/posts/comments/:id/:comment_id
+// @ desc delete comment by id
+// @ access private
+
+router.delete('/comments/:id/:comment_id', auth, async (req, res) => {
+    try {
+        const post = await Post.findById(req.params.id)
+
+        if (!post)
+            return res.status(404).json({ msg: 'post does not exist' })
+
+        // pul out the comment
+        const comment = post.comments.find(comment => comment.id === req.params.comment_id)
+        // make sure the comment exists
+        if (!comment)
+            return res.status(404).json({ msg: 'comment does not exist' })
+
+        // check user
+        if (comment.user.toString() !== req.user.id) {
+            return res.status(401).send(" user not authorized; seems like it's not your post")
+        }
+        // get remove index
+        const removeIndex = post.comments.map(comment => comment.id.toString()).indexOf(req.params.comment_id)
+        post.comments.splice(removeIndex, 1)
+
+        await post.save()
+        res.status(200).json(post.comments)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).send("server error")
+
+    }
+})
+
 
 
 

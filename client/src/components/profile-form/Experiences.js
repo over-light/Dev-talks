@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Moment from 'react-moment'
 import { connect } from 'react-redux'
-import { deleteExperience } from '../../actions/profille'
+import { deleteExperience } from '../../actions/profile.action'
 const Experiences = ({ experience, deleteExperience }) => {
 
     const experiences = experience.map(

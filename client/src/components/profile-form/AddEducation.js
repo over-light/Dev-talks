@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addEducation } from '../../actions/profille'
+import { addEducation } from '../../actions/profile.action'
 import { Link, withRouter } from 'react-router-dom';
 
 const AddEducation = ({ addEducation, history }) => {
@@ -14,7 +14,6 @@ const AddEducation = ({ addEducation, history }) => {
     const { school, degree, fieldofstudy, from, to, current, description } = formData
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(formData);
         addEducation(formData, history)
     }
     return (

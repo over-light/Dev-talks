@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom'
-import { createOrUpdateProfile, getCurrentProfile } from '../../actions/profille'
+import { createOrUpdateProfile, getCurrentProfile } from '../../actions/profile.action'
 import { InputField, SocialInputField } from './CreateProfile';
 
 const EditProfile = ({ profile: { profile, loading }, createOrUpdateProfile, getCurrentProfile, history }) => {
@@ -27,7 +27,9 @@ const EditProfile = ({ profile: { profile, loading }, createOrUpdateProfile, get
         { name: 'facebook', placeholder: 'Facebook URL', icon: 'fab fa-facebook fa-2x', value: facebook },
     ]
 
-    const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value })
+    const handleChange = (e) =>
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+
     const handleSubmit = (e) => {
         e.preventDefault()
         createOrUpdateProfile(formData, history, true)
@@ -36,17 +38,17 @@ const EditProfile = ({ profile: { profile, loading }, createOrUpdateProfile, get
     useEffect(() => {
         getCurrentProfile()
         setFormData({
-            status: !loading && profile.data.status ? profile.data.status : '',
-            company: !loading && profile.data.company ? profile.data.company : '',
-            skills: !loading && profile.data.skills ? profile.data.skills.join(',') : '',
-            website: !loading && profile.data.website ? profile.data.website : '',
-            location: !loading && profile.data.location ? profile.data.location : '',
-            githubusername: !loading && profile.data.githubusername ? profile.data.githubusername : '',
-            bio: !loading && profile.data.bio ? profile.data.bio : '',
-            twitter: !loading && profile.data.social ? profile.data.social.twitter : '',
-            facebook: !loading && profile.data.social ? profile.data.social.facebook : '',
+            status: !loading && profile.status ? profile.status : '',
+            company: !loading && profile.company ? profile.company : '',
+            skills: !loading && profile.skills ? profile.skills.join(',') : '',
+            website: !loading && profile.website ? profile.website : '',
+            location: !loading && profile.location ? profile.location : '',
+            githubusername: !loading && profile.githubusername ? profile.githubusername : '',
+            bio: !loading && profile.bio ? profile.bio : '',
+            twitter: !loading && profile.social ? profile.social.twitter : '',
+            facebook: !loading && profile.social ? profile.social.facebook : '',
         })
-    }, [loading])
+    }, [loading, getCurrentProfile]) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>

@@ -10,6 +10,16 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
     const authLinks = (
         <ul>
             <li>
+                <Link to='/profiles'>
+                    <span>Developers</span>
+                </Link>
+            </li>
+            <li>
+                <Link to='/posts'>
+                    <span>Posts</span>
+                </Link>
+            </li>
+            <li>
                 <Link to='/dashboard'>
                     <i className="fas fa-user"></i>{' '}
                     <span className="hide-sm">Dashboard</span>
@@ -26,7 +36,11 @@ const Navbar = ({ logout, auth: { isAuthenticated, loading } }) => {
 
     const guestLinks = (
         <ul>
-            <li> <Link to='#!'>Developers</Link></li>
+            <li>
+                <Link to='/profiles'>
+                    <span>Developers</span>
+                </Link>
+            </li>
             <li><Link to='/register'>Register</Link></li>
             <li><Link to='/login' >Login</Link></li>
         </ul>
@@ -56,8 +70,6 @@ Navbar.propTypes = {
     logout: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired,
 }
-
-
 
 const mapStateToProps = state => (
     {

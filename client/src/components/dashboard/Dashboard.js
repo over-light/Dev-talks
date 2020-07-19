@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
-import { getCurrentProfile, deleteAccount } from '../../actions/profille'
+import { getCurrentProfile, deleteAccount } from '../../actions/profile.action'
 import { Link } from 'react-router-dom'
 import Spinner from '../layout/Spinner.js'
 import DashboardLinks from './DashboardLinks';
@@ -12,7 +12,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
 
     useEffect(() => {
         getCurrentProfile();
-    }, [])
+    }, [getCurrentProfile])
 
 
     return (
@@ -26,8 +26,8 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
                 {profile !== null ?
                     <>
                         <DashboardLinks />
-                        {profile.data.experience.length > 0 ? <Experiences experience={profile.data.experience} /> : <p>Add your experience man :(</p>}
-                        {profile.data.education.length > 0 ? <Educations education={profile.data.education} /> : <p>College drop out ? or Add your education now :( </p>}
+                        {profile.experience.length > 0 ? <Experiences experience={profile.experience} /> : <p>Add your experience man :(</p>}
+                        {profile.education.length > 0 ? <Educations education={profile.education} /> : <p>College drop out ? or Add your education now :( </p>}
                         <div className="my-2">
                             <button className="btn btn-danger" onClick={() => deleteAccount()}>
                                 <i className="fas fa-user-minus"> Delete my account</i>
@@ -36,7 +36,7 @@ const Dashboard = ({ getCurrentProfile, auth: { user }, profile: { profile, load
                     </>
                     :
                     <>
-                        <p>You are a no profile guy 😢 create one</p>
+                        <p>You are a no profile guy :( create one</p>
                         <Link to='/createProfile' className="btn btn-primary my-1">
                             Create Profile
                         </Link>

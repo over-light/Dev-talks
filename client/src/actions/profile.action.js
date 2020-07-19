@@ -5,18 +5,18 @@ import { setAlert } from './alert';
 
 export const getCurrentProfile = () => async (dispatch) => {
     try {
-        const data = await axios.get(`${ENDPOINT}/api/profile/me`);
+        const res = await axios.get(`${ENDPOINT}/api/profile/me`);
         dispatch({
             type: GET_PROFILE,
-            payload: data
+            payload: res.data
         })
 
     } catch (error) {
         dispatch({
             type: PROFILE_ERROR,
             payload: {
-                msg: error.response.data.msg,
-                status: error.response.status
+                msg: error,
+                status: error.status
             }
         })
     }
@@ -25,10 +25,10 @@ export const getCurrentProfile = () => async (dispatch) => {
 export const getAllProfiles = () => async (dispatch) => {
     dispatch({ type: CLEAR_PROFILE })
     try {
-        const data = await axios.get(`${ENDPOINT}/api/profile/`);
+        const res = await axios.get(`${ENDPOINT}/api/profile/`);
         dispatch({
             type: GET_PROFILES,
-            payload: data
+            payload: res.data
         })
 
     } catch (error) {
@@ -46,20 +46,22 @@ export const getAllProfiles = () => async (dispatch) => {
 export const getProfileById = userId => async (dispatch) => {
 
     try {
-        const data = await axios.get(`${ENDPOINT}/api/profile/user/${userId}`);
+        const res = await axios.get(`${ENDPOINT}/api/profile/user/${userId}`);
         dispatch({
             type: GET_PROFILE,
-            payload: data
+            payload: res.data
         })
 
     } catch (error) {
+        const msg = error.response.data.msg
         dispatch({
             type: PROFILE_ERROR,
             payload: {
-                msg: error.response.data.msg,
+                msg: msg,
                 status: error.response.status
             }
         })
+        dispatch(setAlert(msg, 'danger'))
     }
 }
 
@@ -73,6 +75,7 @@ export const getGithubRepos = username => async (dispatch) => {
         })
 
     } catch (error) {
+        console.log(error.response);
         dispatch({
             type: PROFILE_ERROR,
             payload: {
@@ -91,10 +94,10 @@ export const createOrUpdateProfile = (formData, history, isEdit = false) => asyn
                 'Content-Type': 'application/json'
             }
         }
-        const data = await axios.post(`${ENDPOINT}/api/profile/`, formData, config);
+        const res = await axios.post(`${ENDPOINT}/api/profile/`, formData, config);
         dispatch({
             type: GET_PROFILE,
-            payload: data
+            payload: res.data
         })
         dispatch(setAlert(isEdit ? 'Profile updated' : 'Profile created', 'success'))
         if (!isEdit)
@@ -230,7 +233,7 @@ export const deleteExperience = id => async (dispatch) => {
 export const deleteAccount = () => async (dispatch) => {
     if (window.confirm("Are you sure , you want to delete your account?")) {
         try {
-            const data = await axios.delete(`${ENDPOINT}/api/profile`)
+            await axios.delete(`${ENDPOINT}/api/profile`)
             dispatch({
                 type: CLEAR_PROFILE
             })

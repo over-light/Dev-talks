@@ -16,6 +16,10 @@ const PostSchema = new Schema({
     avatar: {
         type: String
     },
+    date: {
+        type: Date,
+        default: Date.now
+    },
     // array of user objects
     likes: [
         {
