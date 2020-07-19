@@ -1,1 +1,1 @@
-export const ENDPOINT = 'https://dev-talks.herokuapp.com/'
+export const ENDPOINT = 'https://dev-talks.herokuapp.com'
