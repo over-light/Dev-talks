@@ -1,0 +1,33 @@
+.add-post {
+    width: 100%;
+    background: transparent;
+    display: block;
+    border-bottom: 1px solid #fff;
+    padding: 1rem;
+}
+
+textarea {
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    font-size: 1.2rem;
+    border: none;
+}
+
+textarea:focus,
+textarea:active {
+    border: none;
+    outline: none;
+}
+
+.add-post__button {
+    border: none;
+    margin-left: 20px;
+    color: var(--primary-color);
+    background: none;
+}
+
+.add-post__button:hover {
+    color: #fff;
+    background: none;
+}

@@ -18,8 +18,8 @@ const AddExperience = ({ addExperience, history }) => {
     }
     return (
         <>
-            <section className="container">
-                <h1 className="large text-primary">
+            <section className="container ">
+                <h1 className="large font-italic">
                     Add An Experience
                  </h1>
                 <p className="lead">

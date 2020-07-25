@@ -19,7 +19,7 @@ const AddEducation = ({ addEducation, history }) => {
     return (
         <>
             <section className="container">
-                <h1 className="large text-primary">
+                <h1 className="large">
                     Add Your Education
                  </h1>
                 <p className="lead">

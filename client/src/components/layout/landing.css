@@ -1,0 +1,38 @@
+.landing {
+    position: relative;
+    background-color: #1D2636;
+    height: 100vh;
+}
+
+.landing__container {
+    color: #333333;
+    background-color: rgba(146, 171, 207, 0.4);
+    width: 40%;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.landing__footer {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+
+.landing__footer span {
+    cursor: pointer;
+}
+
+@media (max-width:900px) {
+    .landing {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    .landing__container {
+        width: 100%;
+    }
+
+    .landing__header {
+        font-size: 1.5rem;
+    }
+}

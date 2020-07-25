@@ -19,13 +19,13 @@ const AddCommentForm = ({ addComment, isAuthenticated, post_id }) => {
             setAlert('please log in to add comment', 'danger')
     }
     return (
-        <div className="post-form">
-            <div className="bg-primary p">
-                <h3>comment section</h3>
+        <div className="post-form border-bottom">
+            <div className="">
+                <h5 className='text-center my-2'>comment section</h5>
             </div>
             <form className="form my-1">
-                <textarea name="text" cols="30" rows="5" placeholder="leave a comment..." required value={text} onChange={e => setText(e.target.value)}></textarea>
-                <input type="submit" className="btn btn-dark my-1" value="Submit" onClick={(e) => handleSubmit(e)} />
+                <textarea className='border-0' name="text" cols="30" rows="5" placeholder="leave a comment..." required value={text} onChange={e => setText(e.target.value)}></textarea>
+                <input type="submit" className="btn btn-dark m-1 " value="Submit" onClick={(e) => handleSubmit(e)} />
             </form>
         </div>
 

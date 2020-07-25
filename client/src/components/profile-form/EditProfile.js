@@ -53,7 +53,7 @@ const EditProfile = ({ profile: { profile, loading }, createOrUpdateProfile, get
     return (
         <>
             <section className="container">
-                <h1 className="large text-primary">
+                <h1 className="large font-italic">
                     Create Your Profile
                 </h1>
                 <p className="lead">

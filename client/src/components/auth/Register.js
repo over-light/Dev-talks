@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setAlert } from '../../actions/alert'
 import { register } from '../../actions/auth'
 import PropTypes from 'prop-types';
+import { Form, Row, Col, FormGroup, Label } from 'reactstrap'
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ setAlert, register, isAuthenticated, handleToggle }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -29,49 +30,45 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
     return (
 
-        <>
-            <section className="container">
-                <h1 className="large text-primary">Sign Up</h1>
-                <p className="lead"><i className="fas fa-user"></i> Create Your Account</p>
-
-                <form className="form" onSubmit={e => handleSubmit(e)}>
-                    <div className="form-group">
-                        <input type="text" placeholder="Name" name="name" value={name} onChange={e => handleChange(e)} />
-                    </div>
-                    <div className="form-group">
-                        <input type="email" placeholder="Email Address" name="email" value={email} onChange={e => handleChange(e)} />
-                        <small className="form-text"
-                        >This site uses Gravatar so if you want a profile image, use a
-            Gravatar email</small
-                        >
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
+        <Form onSubmit={e => handleSubmit(e)}>
+            <Row form>
+                <Col>
+                    <FormGroup>
+                        <Label for="name">name</Label>
+                        <input className=' form-control' type="text" name="name" value={name} onChange={e => handleChange(e)} placeholder="hey coder :)" />
+                    </FormGroup>
+                    <FormGroup>
+                        <Label for="exampleEmail">Email</Label>
+                        <input className='form-control' type="email" name="email" value={email} onChange={e => handleChange(e)} placeholder="I dont collect email" />
+                    </FormGroup>
+                    <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                        <Label for="examplePassword" className="mr-sm-2">Password</Label>
+                        <input className='form-control' type="password"
                             placeholder="Password"
                             name="password"
 
                             value={password}
-                            onChange={e => handleChange(e)}
-                        />
-                    </div>
-                    <div className="form-group">
-                        <input
-                            type="password"
+                            onChange={e => handleChange(e)} />
+                    </FormGroup>
+                    <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+                        <Label for="examplePassword" className="mr-sm-2">Password</Label>
+                        <input className='form-control' type="password"
                             placeholder="Confirm Password"
                             name="password2"
 
                             value={password2}
-                            onChange={e => handleChange(e)}
-                        />
+                            onChange={e => handleChange(e)} />
+                    </FormGroup>
+
+                    <div className='landing__footer mt-4'>
+                        <button className='mt-2 btn btn-primary'>Signup</button>
+                        <span className='center-x color-green font-weight-bold mt-3' onClick={() => handleToggle()}>already a member? log in</span>
                     </div>
-                    <input type="submit" className="btn btn-primary" value="Register" />
-                </form>
-                <p className="my-1">
-                    Already have an account? <Link to='/login'>Sign In</Link>
-                </p>
-            </section>
-        </>
+                </Col>
+            </Row>
+        </Form>
+
+
     );
 };
 Register.propTypes = {

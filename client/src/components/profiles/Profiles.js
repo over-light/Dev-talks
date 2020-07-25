@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import { getAllProfiles } from '../../actions/profile.action'
 import Spinner from '../layout/Spinner';
 import ProfileItem from './ProfileItem';
+import './profiles.css'
+
 const Profiles = ({ profile: { profiles, loading }, getAllProfiles }) => {
 
     useEffect(() => {
@@ -14,10 +16,10 @@ const Profiles = ({ profile: { profiles, loading }, getAllProfiles }) => {
         <>
             {
                 loading ? <Spinner /> :
-                    <>
-                        <h1 className="large text-primary">Developers</h1>
-                        <p className="lead"><i className="fab fa-connectdevelop"></i>Browse and connect with developers</p>
-                        <div className="profiles">
+                    <div className='profiles__section'>
+                        <h1 className="profiles__header">Developers</h1>
+                        <p className="profiles__lead"><i className="fab fa-connectdevelop"></i>{' '}Browse and connect with developers</p>
+                        < div className="profiles">
                             {profiles.length > 0 && (
                                 profiles.map(profile => (
                                     <ProfileItem key={profile._id} profile={profile} />
@@ -25,7 +27,7 @@ const Profiles = ({ profile: { profiles, loading }, getAllProfiles }) => {
                             )
                             }
                         </div>
-                    </>
+                    </div>
             }
         </>
     )

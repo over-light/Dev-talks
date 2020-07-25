@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,400;0,500;1,400&display=swap');
+/* 
+bluish = #1D2636
+neon = #11ECE5
+light = #92ABCF */
+
+
+.form-control:focus,
+.form-control:active {
+    box-shadow: none !important;
+    background-color: transparent !important;
+}
+
+.form-control {
+    background-color: transparent !important;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+a:hover {
+    text-decoration: none;
+    color: var(--primary-color);
+    opacity: 0.8;
+
+}
+
+input {
+    outline: 0;
+    border-width: 0 0 3px !important;
+    border-color: var(--primary-color) !important;
+    color: #fff !important;
+    background: transparent !important;
+
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* colors */
+
+.color-primary {
+    color: var(--primary-color);
+}
+
+.bg-primary {
+    background-color: #1D2636;
+}
+
+
+.x-large {
+    font-size: 2rem;
+}
+
+.center-x {
+    margin: 0 auto;
+}
+
+
+.border-rad-20_c {
+    border-radius: 20px;
+}
+
+.container {
+    margin-top: 3rem;
+}
+
+.container__middle-div {
+    border-left: 1px solid #92ABCF;
+    border-right: 1px solid #92ABCF;
+    padding: 0;
+    margin: 0;
+}
+
+.container__last-div {
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+
+.center {
+    margin: 0;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+
+}
+
+button:hover {
+    background-color: var(--primary-color);
+    opacity: 0.8;
+}
+
+.post__image {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.btn {
+    margin-right: 10px;
+    border: none;
+}
+
+.btn-light {
+    background-color: var(--text-color);
+}
+
+.btn-light:hover {
+    background-color: var(--text-color);
+    opacity: 0.8;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color);
+    opacity: 0.8;
+}
+
+.btn-primary-outline {
+    background: transparent;
+    border: 1px solid var(--primary-color);
+}
+
+.btn-primary-outline:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.text-primary {
+    color: var(--primary-color) !important;
+}
+
+.outlined {
+    background: none;
+}

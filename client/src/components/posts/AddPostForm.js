@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addPost } from '../../actions/post.action'
 import { setAlert } from '../../actions/alert';
-
+import './addPostForm.css'
 
 //TODO restrict the user has not created his/her profile's yet 
 const AddPostForm = ({ addPost, isAuthenticated }) => {
@@ -19,13 +19,12 @@ const AddPostForm = ({ addPost, isAuthenticated }) => {
             setAlert('please log in to add post', 'danger')
     }
     return (
-        <div className="post-form">
-            <div className="bg-primary p">
-                <h3>Say Something...</h3>
-            </div>
-            <form className="form my-1">
-                <textarea name="text" cols="30" rows="5" placeholder="Create a post" required value={text} onChange={e => setText(e.target.value)}></textarea>
-                <input type="submit" className="btn btn-dark my-1" value="Submit" onClick={(e) => handleSubmit(e)} />
+        <div className="add-post">
+            <form className="my-1 add-post__form">
+                <textarea name="text" rows="5" placeholder="Create a post...." required value={text} onChange={e => setText(e.target.value)}></textarea>
+                <button type="submit" className="btn my-1 add-post__button" onClick={(e) => handleSubmit(e)}>
+                    <i className="fa fa-paper-plane fa-2x"></i>
+                </button>
             </form>
         </div>
 

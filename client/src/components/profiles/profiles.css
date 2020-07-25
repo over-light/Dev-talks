@@ -1,0 +1,28 @@
+.profiles__section {
+    margin-top: 2rem;
+}
+
+.profiles__header {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.profiles__lead {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.profiles {
+    color: #fff;
+}
+
+.profile {
+    background: transparent;
+    border-bottom: 1px dashed var(--text-color);
+    color: var(--primary-color);
+
+}
+
+.profile__status {
+    font-style: italic;
+}

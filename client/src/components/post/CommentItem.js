@@ -11,14 +11,14 @@ const CommentItem = ({ post_id, comment: { date, _id, text, name, avatar, user }
     }
     return (
         <>
-            <div className="post bg-white p-1 my-1">
-                <div>
+            <div className="comment-item bg-transparent p-3 my-1 d-flex border-bottom">
+                <div className='comment-item__left-div mr-3'>
                     <Link to={`/profile/${user}`}>
-                        <img className="round-img" src={avatar} alt="avatar" />
-                        <h4>{name}</h4>
+                        <img className="post__image" src={avatar} alt="avatar" />
+                        <h6 className='mt-2 text-center'>{name}</h6>
                     </Link>
                 </div>
-                <div>
+                <div className='comment-item__right-div'>
                     <p className="my-1">{text}</p>
                     <p className="post-date">Posted on{' '}<Moment format='DD/MM/YYYY'> {date}</Moment></p>
                     {!auth.loading && auth.user._id === user &&
@@ -26,7 +26,7 @@ const CommentItem = ({ post_id, comment: { date, _id, text, name, avatar, user }
                             type="button"
                             className="btn btn-danger"
                             onClick={(e) => deleteComment(post_id, _id)}>
-                            <i className="fas fa-times"></i>
+                            <i className="fa fa-trash"></i>
                         </button>}
                 </div>
             </div>

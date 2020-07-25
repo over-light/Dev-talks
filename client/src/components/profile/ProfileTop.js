@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const ProfileTop = ({ profile: { skill, status, location, company, website, social, user: { name, avatar } } }) => {
     return (
         <>
-            <div className="profile-top bg-primary p-2">
+            <div className="profile-top bg-transparent p-2">
                 <img
                     className="round-img my-1"
                     src={avatar}

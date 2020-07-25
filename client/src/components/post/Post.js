@@ -17,7 +17,7 @@ const Post = ({ getPost, post, loading, match }) => {
     return (
         loading || post === null ? <Spinner /> :
             <>
-                <Link to='/posts' className='btn btn-primary'>Back to Post</Link>
+                <Link to='/posts' className='btn btn-primary mt-3 ml-3'>Back to Post</Link>
                 <PostItem post={post} showActions={false} />
                 <AddCommentForm post_id={post._id} />
 

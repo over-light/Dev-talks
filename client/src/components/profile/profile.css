@@ -1,0 +1,14 @@
+.profile__outer {
+    margin-top: 3rem;
+}
+
+.profile__buttons {
+    margin: 2rem 3rem;
+}
+
+.profile__github-repo {
+    padding: 1rem;
+    background-color: transparent;
+    border-bottom: 1px dashed var(--text-color);
+
+}
